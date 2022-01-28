@@ -6,8 +6,9 @@ namespace PlayerMove
     public class InputController : MonoBehaviour
     {
         [SerializeField] private Mover _player;
+        [SerializeField] private Player _playerState;
         [SerializeField] private Maze _maze;
-        
+
         private InputHandler _inputHandler;
 
         private void Start()
@@ -32,7 +33,7 @@ namespace PlayerMove
         private void Update()
         {
             MazeCommand mazeCommand = _inputHandler.handleMazeInput();
-            if (mazeCommand != null)
+            if (mazeCommand != null && _playerState.State != PlayerState.OnTheFloor)
             {
                 mazeCommand.Execute(_maze);
             }
