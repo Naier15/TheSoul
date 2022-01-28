@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace PlayerMove
@@ -5,6 +6,7 @@ namespace PlayerMove
     public class InputController : MonoBehaviour
     {
         [SerializeField] private Mover _player;
+        [SerializeField] private Maze _maze;
         
         private InputHandler _inputHandler;
 
@@ -15,14 +17,24 @@ namespace PlayerMove
             _inputHandler.SetCommandD(new MoveRight());
             _inputHandler.SetCommandS(new MoveDown());
             _inputHandler.SetCommandW(new MoveUp());
+            _inputHandler.SetCommandSpace(new FlipMaze());
         }
 
         private void FixedUpdate()
         {
-            Command command = _inputHandler.handleInput();
-            if (command != null)
+            PlayerCommand playerCommand = _inputHandler.handlePlayerInput();
+            if (playerCommand != null)
             {
-                command.Move(_player);
+                playerCommand.Move(_player);
+            }
+        }
+
+        private void Update()
+        {
+            MazeCommand mazeCommand = _inputHandler.handleMazeInput();
+            if (mazeCommand != null)
+            {
+                mazeCommand.Execute(_maze);
             }
         }
     }

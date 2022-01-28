@@ -29,23 +29,6 @@ namespace PlayerMove
             float angleDifference = angleY - currentRotationY;
             
             _playerModel.Rotate(0, 0, angleDifference); 
-            //StartCoroutine(StartRotation(angleDifference));
-        }
-        private IEnumerator StartRotation(float angle)
-        {
-            for (float i = 0; i < Mathf.Abs(angle); i += 5)
-            {
-                Debug.Log(angle.ToString()+ " " + i.ToString());
-                if (angle > 0)
-                {
-                    _playerModel.Rotate(0, 5, 0);
-                }
-                else
-                {
-                    _playerModel.Rotate(0, -5, 0);
-                }
-                yield return null;
-            }
         }
     }
 }

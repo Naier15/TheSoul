@@ -2,12 +2,17 @@ using UnityEngine;
 
 namespace PlayerMove
 {
-    public abstract class Command
+    public abstract class PlayerCommand
     {
         public abstract void Move(Mover movableObject);
     }
 
-    public class MoveLeft : Command
+    public abstract class MazeCommand
+    {
+        public abstract void Execute(Maze maze);
+    }
+
+    public class MoveLeft : PlayerCommand
     {
         public override void Move(Mover movableObject)
         {
@@ -16,7 +21,7 @@ namespace PlayerMove
         }
     }
     
-    public class MoveRight : Command
+    public class MoveRight : PlayerCommand
     {
         public override void Move(Mover movableObject)
         {
@@ -25,7 +30,7 @@ namespace PlayerMove
         }
     }
     
-    public class MoveDown : Command
+    public class MoveDown : PlayerCommand
     {
         public override void Move(Mover movableObject)
         {
@@ -34,12 +39,20 @@ namespace PlayerMove
         }
     }
     
-    public class MoveUp : Command
+    public class MoveUp : PlayerCommand
     {
         public override void Move(Mover movableObject)
         {
             movableObject.Move();
             movableObject.Rotate(360);
+        }
+    }
+
+    public class FlipMaze : MazeCommand
+    {
+        public override void Execute(Maze maze)
+        {
+            maze.Flip();
         }
     }
 }

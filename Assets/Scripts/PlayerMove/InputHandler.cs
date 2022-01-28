@@ -3,37 +3,49 @@ using UnityEngine;
 
 public class InputHandler
 {
-    private Command _buttonA;
-    private Command _buttonD;
-    private Command _buttonW;
-    private Command _buttonS;
+    private PlayerCommand _buttonA;
+    private PlayerCommand _buttonD;
+    private PlayerCommand _buttonW;
+    private PlayerCommand _buttonS;
+    private MazeCommand _buttonSpace;
 
-    public void SetCommandA(Command command)
+    public void SetCommandA(MoveLeft command)
     {
         _buttonA = command;
     }
 
-    public void SetCommandD(Command command)
+    public void SetCommandD(PlayerCommand command)
     {
         _buttonD = command;
     }
 
-    public void SetCommandW(Command command)
+    public void SetCommandW(PlayerCommand command)
     {
         _buttonW = command;
     }
 
-    public void SetCommandS(Command command)
+    public void SetCommandS(PlayerCommand command)
     {
         _buttonS = command;
     }
 
-    public Command handleInput()
+    public void SetCommandSpace(MazeCommand command)
+    {
+        _buttonSpace = command;
+    }
+
+    public PlayerCommand handlePlayerInput()
     {
         if (Input.GetKey(KeyCode.A)) return _buttonA;
-        else if (Input.GetKey(KeyCode.D)) return _buttonD;
-        else if (Input.GetKey(KeyCode.S)) return _buttonS;
-        else if (Input.GetKey(KeyCode.W)) return _buttonW;
+        if (Input.GetKey(KeyCode.D)) return _buttonD;
+        if (Input.GetKey(KeyCode.W)) return _buttonW;
+        if (Input.GetKey(KeyCode.S)) return _buttonS;
+        return null;
+    }
+
+    public MazeCommand handleMazeInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) return _buttonSpace;
         return null;
     }
 }
