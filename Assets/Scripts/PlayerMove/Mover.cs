@@ -31,7 +31,6 @@ namespace PlayerMove
             _playerModel.Rotate(0, 0, angleDifference); 
             //StartCoroutine(StartRotation(angleDifference));
         }
-
         private IEnumerator StartRotation(float angle)
         {
             for (float i = 0; i < Mathf.Abs(angle); i += 5)
