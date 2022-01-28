@@ -9,7 +9,7 @@ namespace PlayerMove
 
     public abstract class MazeCommand
     {
-        public abstract void Execute(Maze maze);
+        public abstract void Execute(Maze maze, Hider hider, LightController lightController);
     }
 
     public class MoveLeft : PlayerCommand
@@ -50,9 +50,19 @@ namespace PlayerMove
 
     public class FlipMaze : MazeCommand
     {
-        public override void Execute(Maze maze)
+        public override void Execute(Maze maze, Hider hider, LightController lightController)
         {
             maze.Flip();
+            if (maze.IsWhiteSide == true)
+            {
+                hider.HideObjects();
+                lightController.ShowObjects();
+            }
+            else
+            {
+                hider.ShowObjects();
+                lightController.HideObjects();
+            }
         }
     }
 }

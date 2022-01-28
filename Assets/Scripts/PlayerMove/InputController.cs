@@ -8,6 +8,8 @@ namespace PlayerMove
         [SerializeField] private Mover _player;
         [SerializeField] private Player _playerState;
         [SerializeField] private Maze _maze;
+        [SerializeField] private Hider _hider;
+        [SerializeField] private LightController _lightController;
 
         private InputHandler _inputHandler;
 
@@ -35,7 +37,7 @@ namespace PlayerMove
             MazeCommand mazeCommand = _inputHandler.handleMazeInput();
             if (mazeCommand != null && _playerState.State != PlayerState.OnTheFloor)
             {
-                mazeCommand.Execute(_maze);
+                mazeCommand.Execute(_maze, _hider, _lightController);
             }
         }
     }

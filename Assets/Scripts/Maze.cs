@@ -4,7 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Transform))]
 public class Maze : MonoBehaviour
 {
+    [SerializeField] private bool _isWhiteSide = true;
+
     private Transform _transform;
+
+    public bool IsWhiteSide => _isWhiteSide;
 
     private void Awake()
     {
@@ -14,5 +18,6 @@ public class Maze : MonoBehaviour
     public void Flip()
     {
         _transform.Rotate(0, 0, 180);
+        _isWhiteSide = !_isWhiteSide;
     }
 }
