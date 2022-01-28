@@ -31,9 +31,9 @@ public class InputHandler
     public Command handleInput()
     {
         if (Input.GetKey(KeyCode.A)) return _buttonA;
-        if (Input.GetKey(KeyCode.D)) return _buttonD;
-        if (Input.GetKey(KeyCode.S)) return _buttonS;
-        if (Input.GetKey(KeyCode.W)) return _buttonW;
+        else if (Input.GetKey(KeyCode.D)) return _buttonD;
+        else if (Input.GetKey(KeyCode.S)) return _buttonS;
+        else if (Input.GetKey(KeyCode.W)) return _buttonW;
         return null;
     }
 }
