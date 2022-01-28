@@ -12,6 +12,10 @@ namespace PlayerMove
         private void Start()
         {
             _inputHandler = new InputHandler();
+            _inputHandler.SetCommandA(new Move());
+            _inputHandler.SetCommandD(new Move());
+            _inputHandler.SetCommandS(new Move());
+            _inputHandler.SetCommandW(new Move());
         }
 
         private void Update()

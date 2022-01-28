@@ -1,30 +1,39 @@
+using PlayerMove;
 using UnityEngine;
 
-namespace PlayerMove
+public class InputHandler
 {
-    public class InputHandler
+    private MoveCommand _buttonA;
+    private MoveCommand _buttonD;
+    private MoveCommand _buttonW;
+    private MoveCommand _buttonS;
+
+    public void SetCommandA(MoveCommand command)
     {
-        private MoveCommand _buttonA;
-        private MoveCommand _buttonS;
-        private MoveCommand _buttonD;
-        private MoveCommand _buttonW;
+        _buttonA = command;
+    }
 
-        private void Start()
-        {
-            _buttonA = new Move();
-            _buttonS = new Move();
-            _buttonD = new Move();
-            _buttonW = new Move();
-        }
+    public void SetCommandD(MoveCommand command)
+    {
+        _buttonD = command;
+    }
 
-        public MoveCommand handleInput()
-        {
-            Debug.Log(Input.GetKeyDown(KeyCode.A));
-            if (Input.GetKeyDown(KeyCode.A)) return _buttonA;
-            if (Input.GetKeyDown(KeyCode.S)) return _buttonS;
-            if (Input.GetKeyDown(KeyCode.D)) return _buttonD;
-            if (Input.GetKeyDown(KeyCode.W)) return _buttonW;
-            return null;
-        }
+    public void SetCommandW(MoveCommand command)
+    {
+        _buttonW = command;
+    }
+
+    public void SetCommandS(MoveCommand command)
+    {
+        _buttonS = command;
+    }
+
+    public MoveCommand handleInput()
+    {
+        if (Input.GetKey(KeyCode.A)) return _buttonA;
+        if (Input.GetKey(KeyCode.D)) return _buttonD;
+        if (Input.GetKey(KeyCode.S)) return _buttonS;
+        if (Input.GetKey(KeyCode.W)) return _buttonW;
+        return null;
     }
 }
