@@ -3,32 +3,32 @@ using UnityEngine;
 
 public class InputHandler
 {
-    private MoveCommand _buttonA;
-    private MoveCommand _buttonD;
-    private MoveCommand _buttonW;
-    private MoveCommand _buttonS;
+    private Command _buttonA;
+    private Command _buttonD;
+    private Command _buttonW;
+    private Command _buttonS;
 
-    public void SetCommandA(MoveCommand command)
+    public void SetCommandA(Command command)
     {
         _buttonA = command;
     }
 
-    public void SetCommandD(MoveCommand command)
+    public void SetCommandD(Command command)
     {
         _buttonD = command;
     }
 
-    public void SetCommandW(MoveCommand command)
+    public void SetCommandW(Command command)
     {
         _buttonW = command;
     }
 
-    public void SetCommandS(MoveCommand command)
+    public void SetCommandS(Command command)
     {
         _buttonS = command;
     }
 
-    public MoveCommand handleInput()
+    public Command handleInput()
     {
         if (Input.GetKey(KeyCode.A)) return _buttonA;
         if (Input.GetKey(KeyCode.D)) return _buttonD;

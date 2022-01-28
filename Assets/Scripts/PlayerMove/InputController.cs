@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace PlayerMove
@@ -6,24 +5,24 @@ namespace PlayerMove
     public class InputController : MonoBehaviour
     {
         [SerializeField] private Mover _player;
-
+        
         private InputHandler _inputHandler;
 
         private void Start()
         {
             _inputHandler = new InputHandler();
-            _inputHandler.SetCommandA(new Move());
-            _inputHandler.SetCommandD(new Move());
-            _inputHandler.SetCommandS(new Move());
-            _inputHandler.SetCommandW(new Move());
+            _inputHandler.SetCommandA(new MoveLeft());
+            _inputHandler.SetCommandD(new MoveRight());
+            _inputHandler.SetCommandS(new MoveDown());
+            _inputHandler.SetCommandW(new MoveUp());
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            MoveCommand command = _inputHandler.handleInput();
+            Command command = _inputHandler.handleInput();
             if (command != null)
             {
-                command.Execute(_player);
+                command.Move(_player);
             }
         }
     }
