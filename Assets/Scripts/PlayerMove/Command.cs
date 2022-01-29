@@ -16,8 +16,8 @@ namespace PlayerMove
     {
         public override void Move(Mover movableObject)
         {
-            movableObject.Move();
             movableObject.Rotate(270);
+            movableObject.Move();
         }
     }
     
@@ -25,8 +25,8 @@ namespace PlayerMove
     {
         public override void Move(Mover movableObject)
         {
-            movableObject.Move();
             movableObject.Rotate(90);
+            movableObject.Move();
         }
     }
     
@@ -34,8 +34,8 @@ namespace PlayerMove
     {
         public override void Move(Mover movableObject)
         {
-            movableObject.Move();
             movableObject.Rotate(180);
+            movableObject.Move();
         }
     }
     
@@ -43,8 +43,8 @@ namespace PlayerMove
     {
         public override void Move(Mover movableObject)
         {
-            movableObject.Move();
             movableObject.Rotate(360);
+            movableObject.Move();
         }
     }
 

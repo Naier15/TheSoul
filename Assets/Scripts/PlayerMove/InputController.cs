@@ -26,7 +26,7 @@ namespace PlayerMove
         private void FixedUpdate()
         {
             PlayerCommand playerCommand = _inputHandler.handlePlayerInput();
-            if (playerCommand != null)
+            if (playerCommand != null && GeneralSettings.instance.gameMode == GameMode.UNLOCKED)
             {
                 playerCommand.Move(_player);
             }
