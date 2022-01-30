@@ -18,7 +18,10 @@ public class Maze : MonoBehaviour
     public void Flip()
     {
         MusicController.instance.passPortal.Play();
-        _transform.Rotate(0, 0, 180);
+        if (name == "labrinth")
+            _transform.Rotate(0, 0, 180);
+        if (name == "labrinth2")
+            _transform.Rotate(180, 0, 0);
         _isWhiteSide = !_isWhiteSide;
         FlipMusic();
     }
