@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameMode {
     LOCKED, UNLOCKED
@@ -33,5 +34,10 @@ public class GeneralSettings : MonoBehaviour
         MusicController.instance.background.Play();
         MusicController.instance.portals.Play();
         MusicController.instance.wind.Play();
+    }
+
+    public void StartNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

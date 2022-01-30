@@ -10,6 +10,7 @@ namespace PlayerMove
         [SerializeField] private Maze _maze;
         [SerializeField] private Hider _hider;
         [SerializeField] private LightController _lightController;
+        [SerializeField] private CameraDrawer _camera;
 
         private InputHandler _inputHandler;
 
@@ -38,6 +39,7 @@ namespace PlayerMove
             if (mazeCommand != null && _playerState.State != PlayerState.OnTheFloor)
             {
                 mazeCommand.Execute(_maze, _hider, _lightController);
+                _camera.ChangeColor();
             }
         }
     }
